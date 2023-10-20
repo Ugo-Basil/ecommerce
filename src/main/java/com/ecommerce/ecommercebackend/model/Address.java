@@ -24,7 +24,7 @@ public class Address {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private LocalUser user;
+    private LocalUser  user;
 
     public LocalUser getUser() {
         return user;
