@@ -1,5 +1,7 @@
 package com.ecommerce.ecommercebackend.api.controller.auth;
 
+import com.ecommerce.ecommercebackend.api.model.LoginBody;
+import com.ecommerce.ecommercebackend.api.model.LoginResponse;
 import com.ecommerce.ecommercebackend.api.model.RegistrationBody;
 import com.ecommerce.ecommercebackend.exception.UserAlreadyExistsException;
 import com.ecommerce.ecommercebackend.service.UserService;
@@ -25,6 +27,18 @@ public class AuthenticationController {
             return ResponseEntity.ok().build();
         } catch (UserAlreadyExistsException e) {
            return  ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+    }
+
+    @PostMapping("/login")
+    public  ResponseEntity loginUser(@Valid @RequestBody LoginBody loginBody){
+        String jwt = userService.loginUser(loginBody);
+        if(jwt == null){
+            return  ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }else {
+            LoginResponse response = new LoginResponse();
+            response.setJwt(jwt);
+            return ResponseEntity.ok(response);
         }
     }
 }
