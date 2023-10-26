@@ -7,7 +7,7 @@ DECLARE @userId1 AS INT = 8;
 -- Replace the id here with the second user id you want to have ownership of the orders.
 DECLARE @userId2 AS INT = 9;
 
-DELETE FROM web_order_quantities;
+DELETE FROM web_order_qauntities ;
 DELETE FROM web_order;
 DELETE FROM inventory;
 DELETE FROM product;
@@ -55,13 +55,13 @@ SELECT  @order3 = id FROM web_order WHERE address_id = @address1 AND user_id = @
 SELECT TOP 1 @order4 = id FROM web_order WHERE address_id = @address2 AND user_id = @userId2 ORDER BY id DESC
 SELECT @order5 = id FROM web_order WHERE address_id = @address2 AND user_id = @userId2 ORDER BY id DESC OFFSET 1 ROW FETCH FIRST 1 ROW ONLY
 
-INSERT INTO web_order_quantities (order_id, product_id, quantity) VALUES (@order1, @product1, 5);
-INSERT INTO web_order_quantities (order_id, product_id, quantity) VALUES (@order1, @product2, 5);
-INSERT INTO web_order_quantities (order_id, product_id, quantity) VALUES (@order2, @product3, 5);
-INSERT INTO web_order_quantities (order_id, product_id, quantity) VALUES (@order2, @product2, 5);
-INSERT INTO web_order_quantities (order_id, product_id, quantity) VALUES (@order2, @product5, 5);
-INSERT INTO web_order_quantities (order_id, product_id, quantity) VALUES (@order3, @product3, 5);
-INSERT INTO web_order_quantities (order_id, product_id, quantity) VALUES (@order4, @product4, 5);
-INSERT INTO web_order_quantities (order_id, product_id, quantity) VALUES (@order4, @product2, 5);
-INSERT INTO web_order_quantities (order_id, product_id, quantity) VALUES (@order5, @product3, 5);
-INSERT INTO web_order_quantities (order_id, product_id, quantity) VALUES (@order5, @product1, 5);
+INSERT INTO web_order_qauntities (web_order_id, product_id, quantity) VALUES (@order1, @product1, 5);
+INSERT INTO web_order_qauntities (web_order_id, product_id, quantity) VALUES (@order1, @product2, 5);
+INSERT INTO web_order_qauntities (web_order_id, product_id, quantity) VALUES (@order2, @product3, 5);
+INSERT INTO web_order_qauntities (web_order_id, product_id, quantity) VALUES (@order2, @product2, 5);
+INSERT INTO web_order_qauntities (web_order_id, product_id, quantity) VALUES (@order2, @product5, 5);
+INSERT INTO web_order_qauntities (web_order_id, product_id, quantity) VALUES (@order3, @product3, 5);
+INSERT INTO web_order_qauntities (web_order_id, product_id, quantity) VALUES (@order4, @product4, 5);
+INSERT INTO web_order_qauntities (web_order_id, product_id, quantity) VALUES (@order4, @product2, 5);
+INSERT INTO web_order_qauntities (web_order_id, product_id, quantity) VALUES (@order5, @product3, 5);
+INSERT INTO web_order_qauntities (web_order_id, product_id, quantity) VALUES (@order5, @product1, 5);
